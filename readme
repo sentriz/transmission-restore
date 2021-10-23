@@ -1,0 +1,18 @@
+$ go install go.senan.xyz/transmission-restore@latest
+
+# iterate local mapping directories containing download folders, lookup the
+# torrent file from -torrents-path, and upload them to transmission, paused.
+# wait 1 sec for each upload
+
+$ transmission-restore \                      
+    -torrents-path "/path/to/torrents/cache" \                                                                            
+    -transmission-host "transmission.example.com" \                 
+    -transmission-username "admin" \                              
+    -transmission-password "admin" \                   
+    -transmission-https \                                         
+    -transmission-port 443 \                                      
+    -mapping "/local/downloads/music;/remote/downloads/music" \
+    -mapping "/local/downloads/tv;/remote/downloads/tv" \    
+    -mapping "/local/downloads/film;/remote/downloads/film" \
+    -dry-run \
+    -wait-secs 1
